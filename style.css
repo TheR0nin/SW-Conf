@@ -1,0 +1,257 @@
+body {
+    font-size: 15px;
+}
+
+button{
+    background: var(--color-cheto);
+    border: 1px white solid;
+    padding: 10px 20px;
+    color: white;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* WRAPPER */
+
+.wrapper {
+    display: grid;
+    grid-gap: 20px;
+    
+}
+
+/* TOP */
+
+.top{
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas: 
+    "principal principal entrada1"
+    "principal principal entrada2";
+}
+
+.principal{
+    grid-area: principal;
+    min-height: 400px;
+    display: flex;
+    /* padding: 1px; */
+    flex-direction: column;
+    justify-content:top;
+    align-items: flex-start; 
+    background:rgba(255, 255, 255, 0.048) url(./Assets/75-756823_star-wars-png-falcon-star-wars-png.png);
+    background-size:80%;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.733);
+}
+
+.entrada{
+    display:grid;
+    display: flex;
+    align-items:flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding:1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.733);
+}
+
+.enrtrada p{
+    margin:0;
+}
+
+.principal > *{
+   /*  background:var(--color-cheto); */
+   margin: 0;
+   font-size: 20px;
+   padding-top: -10px;
+   padding-left: 10px;
+}
+
+.principal h1{
+    font-size: 50px;
+    padding: 15px;
+    margin: 0;
+}
+
+.entrada1{
+    background:rgba(255, 255, 255, 0.048) url(./Assets/a7992b5f049b35fbf4b4d7c3145b2151.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 80%;
+    grid-area:entrada1;
+}
+
+.entrada2{
+    background: rgba(255, 255, 255, 0.048) url(./Assets/dds2eol-ec5d6cf8-42f7-41e8-9a52-b7463b1fd75b.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 80%;
+    grid-area:entrada2;
+}
+
+.price{
+    font-size: 60px;
+    font-weight: 300px;
+}
+
+/* Menu */
+
+.menu ul{
+    display: grid;
+    grid-gap: 10px;
+    padding:0;
+    list-style: none;
+    grid-template-columns: repeat(auto-fit, minmax(100px,1fr));
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.733);
+
+    
+}
+
+.menu a{
+    background:rgba(255, 255, 255, 0.048);
+    display: block;
+    text-decoration: none;
+    padding:10px;
+    text-align: center;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+[aria-controls="menu-list"] {
+    display: none;
+}
+
+/* Features */
+
+.features {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    
+}
+
+.feature {
+    background:rgba(255, 255, 255, 0.11);
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.733);
+}
+
+.feature .icon {
+    font-size: 50px;
+}
+
+.feature p {
+    color:rgba(255, 255, 255, 0.61);;
+}
+
+.feature h3 {
+    background:rgba(255, 255, 255, 0.11);
+}
+
+.about {
+    background:rgba(255, 255, 255, 0.11);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.733);
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    grid-gap: 20px;
+    align-items: center;
+}
+
+.about video {
+    width:100%;
+}
+
+/* Galery */
+
+.gallery {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+}
+
+.gallery img {
+    width:100%;
+}
+
+.gallery h2 {
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-gap: 20px;
+    color: rgb(255, 219, 15);
+    color: rgba(255, 255, 255, 0.61);
+    align-items: center;
+}
+
+.gallery h2:before,
+.gallery h2:after {
+    display: block;
+    content: " ";
+    height: 10px;
+    background:linear-gradient(to var(--direction, left), #6e6e6e 0%, transparent);
+}
+
+.gallery h2:after {
+    --direction: right;
+}
+
+@media (max-width: 1000px) {
+    .menu {
+        order: -1;
+        perspective: 400px;
+    }
+
+    [aria-controls="menu-list"] {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .menu ul {
+        transform: rotatex(90deg);
+        transition:all 0.5s;
+        max-height: 0;
+        overflow: hidden;
+    }
+
+    [aria-expanded="true"] ~ ul {
+        display: grid;
+        max-height: 500px;
+        transform: rotatex(0);
+    }
+
+    [aria-expanded="false"] .close {
+        display: none;
+    }
+    
+    [aria-expanded="true"] .close {
+        display: inline-block;
+    }
+
+    [aria-expanded="true"] .open {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .top {
+        grid-template-areas: 
+        "principal principal"
+        "entrada1 entrada 2";
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .top {
+        grid-template-areas: 
+        "principal"
+        "entrada1"
+        "entrada2";
+    }
+}
